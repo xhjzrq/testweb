@@ -3,7 +3,7 @@ import store from './store'
 import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-import { getToken } from '@/utils/auth' // get token from cookie
+import { getToken, getUser } from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
@@ -11,6 +11,19 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
+  if (to.path === '/form/index') {
+    console.log(JSON.parse(getUser()))
+
+    if (JSON.parse(getUser()).user.username != 'admin') {
+      Message({
+        //  message: res.message,
+        message: '您不是管理员 没有此权限',
+        type: 'error',
+        duration: 5 * 1000
+      })
+      return
+    }
+  }
   // start progress bar
   NProgress.start()
 

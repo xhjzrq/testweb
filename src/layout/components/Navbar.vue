@@ -20,11 +20,14 @@
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          {{ xhjnpm }}
+          <!-- afafadfasfadfa -->
+          <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
           <i class="el-icon-caret-bottom" />
         </div>
+
         <el-dropdown-menu slot="dropdown">
-          <router-link to="/profile/index">
+          <!-- <router-link to="/profile/index">
             <el-dropdown-item>Profile</el-dropdown-item>
           </router-link>
           <router-link to="/">
@@ -35,13 +38,18 @@
           </a>
           <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
             <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
+          </a> -->
+          <el-dropdown-item divided>
+            <span @click="open">修改</span>
           </el-dropdown-item>
+          <el-dropdown-item divided @click.native="logout">
+            <span style="display:block;">退出</span>
+          </el-dropdown-item>
+
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    <edit :flag="uinfo" :flagg="info" @a="a" />
   </div>
 </template>
 
@@ -53,6 +61,8 @@ import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
+import edit from '@/views/form/edit'
+import { getToken, setToken, removeToken, getUser, setUser, removeUser } from '@/utils/auth'
 
 export default {
   components: {
@@ -61,14 +71,29 @@ export default {
     ErrorLog,
     Screenfull,
     SizeSelect,
-    Search
+    Search,
+    edit
+  },
+  data() {
+    return {
+      uinfo: false,
+      info: ''
+    }
   },
   computed: {
     ...mapGetters([
       'sidebar',
       'avatar',
       'device'
-    ])
+    ]),
+    xhjnpm(newvalue, oldvulae) {
+      console.log(this.$store.getters)
+      return JSON.parse(getUser()).user.username
+    }
+  },
+  created() {
+    // console.log( JSON.parse(this.$store.getters.myname).user.username)
+    console.log(JSON.parse(getUser()).user.username)
   },
   methods: {
     toggleSideBar() {
@@ -76,7 +101,15 @@ export default {
     },
     async logout() {
       await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      // this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      this.$router.push('/login')
+    },
+    open() {
+      this.uinfo = true
+      this.info = JSON.parse(getUser()).user
+    },
+    a() {
+      this.uinfo = false
     }
   }
 }
