@@ -17,7 +17,10 @@
         style="width: 100%"
         :header-cell-style="{background:'#eef1f6',color:'#606266'}"
       >
-        <el-table-column prop="username" label="用户名" :resizable="false" />
+        <el-table-column prop="username" label="用户名" width="180" :resizable="false"/>
+         <!-- :filters="filtersData"
+         :filter-method="filterHandler" -->
+        
         <el-table-column prop="realname" label="姓名" :resizable="false" />
         <el-table-column prop="phone" label="手机" :resizable="false" />
         <el-table-column prop="department" label="单位" :resizable="false" />
@@ -141,7 +144,7 @@ export default {
       dialogVisibleupdate: false,
       formLabelWidth: '70px',
       labelPosition: 'right',
-
+filtersData:[],
       formLabelAlign: {
 
         username: '',
@@ -172,7 +175,9 @@ export default {
       this.listLoading = true
       getlist(this.input).then((response) => {
         this.tableData = response.data.list
-        console.log(response)
+        this.filtersData=response.data.userfilter
+        console.log(response.data.userfilter)
+        console.log(1)
         this.listLoading = false
         // this.loading=false;
       })
@@ -188,6 +193,10 @@ export default {
         })
         .catch((_) => {})
     },
+    filterHandler(value, row, column) {
+        const property = column['property'];
+        return row[property] === value;
+      },
     submit(formLabelAlign) {
       this.dialogVisible = false
       // let requestData = JSON.stringify({

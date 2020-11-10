@@ -29,6 +29,12 @@ const tableRouter = {
       name: 'tx',
       component: () => import('@/views/table/index1'),
       meta: { title: '铁舾生产设计数据管理' }
+    },
+    {
+      path: 'tree1tx1',
+      name: 'dy',
+      component: () => import('@/views/table/index2'),
+      meta: { title: '单元生产设计数据管理' }
     }
     // {
     //   path: 'complex-table',

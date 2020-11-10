@@ -8,7 +8,7 @@
           style="    margin-right: 600px;
     "
         >图号:{{ name }}</span>
-
+          
         <span>
           <span class="turn" :class="{grey: currentPage==1}" @click="changePdfPage(0)">上一页</span>
           {{ currentPage }} / {{ pageCount }}
@@ -36,6 +36,8 @@
         <!-- <button @click="counterClock">旋转1</button> -->
 
       </span>
+      <div style=" overflow-x: auto ;
+    white-space: nowrap ;">
       <pdf
         ref="pdf"
         :src="pdfUrl"
@@ -45,7 +47,7 @@
         @page-loaded="currentPage=$event"
         @loaded="loadPdfHandler"
       />
-
+</div>
     </div>
   </div>
 </template>
@@ -95,10 +97,13 @@ export default {
 
     console.log(this.name + '---' + this.sname)
     //  this.name='511BMP133PM'
-    this.pdfUrl = `/${this.name}.pdf`
-    this.pdfUrl = `http://localhost/project01/pdf/${this.sname}/${this.name}.pdf`
+    //this.pdfUrl = `/${this.name}.pdf`
+    this.pdfUrl = `http://192.122.15.199/project01/pdf/${this.sname}/${this.name}.pdf`
+   
+    //this.pdfUrl = "/511BMP133PM.pdf";
+   
     console.log(this.pdfUrl)
-    // this.pdfUrl='C:\\Users\\xhj\\Desktop\\511BMP133PM.pdf'
+  
     this.pdfUrl = pdf.createLoadingTask(this.pdfUrl)
   },
   methods: {

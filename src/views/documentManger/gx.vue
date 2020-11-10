@@ -1,18 +1,34 @@
 <template>
   <div class="app-container">
     <el-container>
-      <!-- <el-aside width="200px" style="margin-top: 21px; height:796px"> -->
-
-      <el-aside
-        style="margin-top: 21px; height: 796px; background: white"
-        width="200px"
-      >
-        <!-- <span style="font-weight:bold;">船支制作图</span> -->
-        <!-- <a-tree show-line :default-expanded-keys="['0-0-0']" :tree-data="treeData"  @select="onSelect">
-    <a-icon slot="switcherIcon" type="down" />
-          </a-tree>-->
-
-        <el-tree
+      <el-header style="height: 40px" class="aaaa">
+        <el-row :gutter="50">
+          <el-col :span="15">
+            <el-form :inline="true" class="demo-form-inline">
+              <el-form-item label="工程编号">
+                <el-input v-model="input" placeholder="工程编号" />
+              </el-form-item>
+              <el-form-item label="制作图号">
+                <el-input v-model="tuhao" placeholder="分段号" />
+              </el-form-item>
+              <el-form-item>
+                <el-button
+                  icon="el-icon-search"
+                  circle
+                  size="medium"
+                  @click="fetchData()"
+                />
+              </el-form-item>
+            </el-form>
+          </el-col>
+        </el-row>
+      </el-header>
+      <el-container>
+        <el-aside
+          style="margin-top: 21px; height: 541px; background: white"
+          width="200px"
+        >
+     <el-tree
           :data="treedata"
           :props="defaultProps"
           node-key="id"
@@ -20,7 +36,7 @@
         />
       </el-aside>
 
-      <el-main>
+ <el-main>
         <el-row>
           <el-upload
             ref="upload"
@@ -88,10 +104,11 @@
           </el-table>
         </div>
       </el-main>
+      
+      </el-container>
     </el-container>
   </div>
 </template>
-
 <script>
 import { getPdfList, getPdf, getListDist, getPdfDel } from '@/api/table'
 import { Message, MessageBox } from 'element-ui'

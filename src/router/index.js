@@ -236,7 +236,30 @@ export const asyncRoutes = [
   //       meta: { title: 'Tab', icon: 'tab' }
   //     }
   //   ]
-  // },
+  // },path: '/table',
+  // {
+  //   path:'/documentManger',
+  //   component: Layout,
+  //   redirect: '',
+  //   name: 'file',
+  //   meta: { title: '文件管理', icon: 'pdf' },
+  //   children: [
+  
+  //     {
+  //       path: 'filepdf',
+  //       name: 'Filepdf',
+  //       component: () => import('@/views/documentManger/gx'),
+  //       meta: { title: '管系文件管理' }
+  //     },
+  //     {
+  //       path: 'filepdf1',
+  //       name: 'Filepdf1',
+  //       component: () => import('@/views/documentManger/index'),
+  //       meta: { title: '铁舾文件管理' }
+  //     },
+    
+  //   ]  }
+  // ,
 
   {
     path: '/filepdf',
@@ -262,6 +285,18 @@ export const asyncRoutes = [
       }
     ]
   },
+  // {
+  //   path: '/test',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'test',
+  //       name: 'Test',
+  //       component: () => import('@/views/form/test'),
+  //       meta: { title: '用户测试', icon: 'form' }
+  //     }
+  //   ]
+  // },
   {
     path: '/openpdf',
     hidden: true,

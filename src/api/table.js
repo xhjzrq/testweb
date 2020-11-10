@@ -82,3 +82,19 @@ export function getPdfDel(project, fileName) {
     params: { project, fileName }
   })
 }
+
+
+export function getDYList(czbh, dymc) {
+  return request({
+    url: '/dyTree/list',
+    method: 'get',
+    params: { czbh, czbh }
+  })
+}
+export function getADy(czbh,zzth) {
+  return request({
+    url: '/dyMx/dyall',
+    method: 'get',
+    params: { czbh,zzth }
+  })
+}

@@ -1,8 +1,7 @@
 <template>
   <div class="app-container">
     <el-container>
-      <el-header style="height:40px" class="aaaa">
-
+      <el-header style="height: 40px" class="aaaa">
         <el-row>
           <!-- <div>
       <pdf src="C:\Users\xhj\Desktop\511BMP133PM.pdf"></pdf>
@@ -18,12 +17,21 @@
                 <el-input v-model="tuhao" placeholder="制作图号" />
               </el-form-item>
               <el-form-item>
-                <el-button icon="el-icon-search" circle size="medium" @click="fetchData()" />
+                <el-button
+                  icon="el-icon-search"
+                  circle
+                  size="medium"
+                  @click="fetchData()"
+                />
               </el-form-item>
             </el-form>
           </el-col>
 
-          <el-col :span="9" style="text-align: right;"> <el-button type="primary" size="small" @click="aaa">导出EXCEL</el-button> </el-col>
+          <el-col :span="9" style="text-align: right">
+            <el-button type="primary" size="small" @click="aaa"
+              >导出EXCEL</el-button
+            >
+          </el-col>
         </el-row>
 
         <!-- <el-row>
@@ -38,7 +46,10 @@
       </el-header>
       <el-container>
         <!-- <el-aside width="200px" style="margin-top: 21px; height:796px"> -->
-        <el-aside style="margin-top: 21px; height:819px; background:white" width="200px">
+        <el-aside
+          style="margin-top: 21px; height: 819px; background: white"
+          width="200px"
+        >
           <!-- <span style="font-weight:bold;">船支制作图</span> -->
           <!-- <a-tree show-line :default-expanded-keys="['0-0-0']" :tree-data="treeData"  @select="onSelect">
     <a-icon slot="switcherIcon" type="down" />
@@ -49,39 +60,53 @@
             :props="defaultProps"
             node-key="id"
             @node-click="handleNodeClick"
+            default-expand-all
           />
         </el-aside>
 
         <el-main>
-
           <div class="zz">
-            <span style="font-weight:bold;">制作图部件数据</span>
+            <span style="font-weight: bold">管件基础数据</span>
             <el-table
               v-loading="loading"
               :data="tableOne"
               border
-              style="width: 100%;"
+              style="width: 100%"
               height="250"
-              :header-cell-style="{background:'#eef1f6',color:'#606266',padding:'0px'}"
+              :header-cell-style="{
+                background: '#eef1f6',
+                color: '#606266',
+                padding: '0px',
+              }"
               :row-style="iRowStyle"
               :cell-style="iCellStyle"
             >
-              <el-table-column prop="project" label="工程编号" width="100" align="center" />
-              <el-table-column prop="drawingno" label="制作图号" width="120" align="center" />
-              <el-table-column prop="tribonModule" label="分段" width="80" align="center" />
-              <el-table-column prop="pipeNo" label="部件号" width="150" align="center" />
-
-              <el-table-column prop="inTreatment" label="内表面处理" width="90" align="center" />
-              <el-table-column prop="outTreatment" label="外表面处理" width="90" align="center" />
-              <el-table-column prop="inPaintCode" label="内涂装代码" width="90" align="center" />
-              <el-table-column prop="outPaintCode" label="外涂装代码" width="90" align="center" />
-              <el-table-column prop="iArea" label="内表面积" align="center" />
-              <el-table-column prop="outArea" label="外表面积" align="center" />
-              <el-table-column prop="pressure" label="压力Mpa" align="center" />
-              <el-table-column prop="pipeWeight" label="重量Kg" align="center" />
+              <el-table-column
+                prop="project"
+                label="工程编号"
+                width="100"
+                align="center"
+              />
+              <el-table-column
+                prop="drawingno"
+                label="制作图号"
+                width="120"
+                align="center"
+              />
+              <el-table-column
+                prop="tribonModule"
+                label="分段"
+                width="80"
+                align="center"
+              />
+              <el-table-column
+                prop="pipeNo"
+                label="部件号"
+                width="150"
+                align="center"
+              />
               <el-table-column prop="page" label="页码" align="center" />
               <el-table-column prop="page" label="查看pdf" align="center">
-
                 <template slot-scope="scope">
                   <el-button
                     type="primary"
@@ -92,60 +117,175 @@
                   />
                 </template>
               </el-table-column>
+              <el-table-column
+                prop="inTreatment"
+                label="内表面处理"
+                width="90"
+                align="center"
+              />
+              <el-table-column
+                prop="outTreatment"
+                label="外表面处理"
+                width="90"
+                align="center"
+              />
+              <el-table-column
+                prop="inPaintCode"
+                label="内涂装代码"
+                width="90"
+                align="center"
+              />
+              <el-table-column
+                prop="outPaintCode"
+                label="外涂装代码"
+                width="90"
+                align="center"
+              />
+              <el-table-column prop="iArea" label="内表面积" align="center" />
+              <el-table-column prop="outArea" label="外表面积" align="center" />
+              <el-table-column prop="pressure" label="压力Mpa" align="center" />
+              <el-table-column
+                prop="pipeWeight"
+                label="重量Kg"
+                align="center"
+              />
+
               <el-table-column prop="users" label="设计人员" align="center" />
-              <el-table-column prop="createDate" label="建立时间" :show-overflow-tooltip="true" align="center" />
-              <el-table-column prop="modifyDate" label="修改时间" :show-overflow-tooltip="true" align="center" />
-              <el-table-column prop="pipeLineCode" label="生产线编码" align="center" />
+              <el-table-column
+                prop="createDate"
+                label="建立时间"
+                :show-overflow-tooltip="true"
+                align="center"
+              />
+              <el-table-column
+                prop="modifyDate"
+                label="修改时间"
+                :show-overflow-tooltip="true"
+                align="center"
+              />
+              <el-table-column
+                prop="pipeLineCode"
+                label="生产线编码"
+                align="center"
+              />
             </el-table>
-            <div style="margin-top:15px" />
-            <span style="font-weight:bold;">制作图部件材料数据</span>
+            <div style="margin-top: 15px" />
+            <span style="font-weight: bold">管件材料数据</span>
             <el-table
               v-loading="loading"
               :data="tableTwo"
               border
-              style="width: 100%;"
+              style="width: 100%"
               height="250"
-              :header-cell-style="{background:'#eef1f6',color:'#606266',padding:'0px'}"
+              :header-cell-style="{
+                background: '#eef1f6',
+                color: '#606266',
+                padding: '0px',
+              }"
               :row-style="iRowStyle"
               :cell-style="iCellStyle"
             >
-              <el-table-column prop="project" label="工程编号" width="100" align="center" />
-              <el-table-column prop="drawingNo" label="制作图号" width="120" align="center" />
-              <el-table-column prop="tribonModule" label="分段" width="80" align="center" />
-              <el-table-column prop="pipeNo" label="部件号" width="150" align="center" />
+              <el-table-column
+                prop="project"
+                label="工程编号"
+                width="100"
+                align="center"
+              />
+              <el-table-column
+                prop="drawingNo"
+                label="制作图号"
+                width="120"
+                align="center"
+              />
+              <el-table-column
+                prop="tribonModule"
+                label="分段"
+                width="80"
+                align="center"
+              />
+              <el-table-column
+                prop="pipeNo"
+                label="部件号"
+                width="150"
+                align="center"
+              />
               <el-table-column prop="mtrlPos" label="材料序号" align="center" />
               <el-table-column prop="mtrlFlag" label="标识" align="center" />
               <el-table-column prop="mtrlName" label="名称" align="center" />
               <el-table-column prop="mtrlGG" label="规格" align="center" />
-              <el-table-column prop="mtrlXHCZ" label="型号材质" align="center" />
-              <el-table-column prop="mtrlQuantity" label="数量" align="center" />
+              <el-table-column
+                prop="mtrlXHCZ"
+                label="型号材质"
+                align="center"
+              />
+              <el-table-column
+                prop="mtrlQuantity"
+                label="数量"
+                align="center"
+              />
               <el-table-column prop="mtrlUnit" label="单位" align="center" />
-              <el-table-column prop="mtrlBuildLength" label="制造长度mm" align="center" />
-              <el-table-column prop="mtrlWeight" label="重量Kg" align="center" />
+              <el-table-column
+                prop="mtrlBuildLength"
+                label="制造长度mm"
+                align="center"
+              />
+              <el-table-column
+                prop="mtrlWeight"
+                label="重量Kg"
+                align="center"
+              />
             </el-table>
 
-            <div style="margin-top:15px" />
-            <span style="font-weight:bold;">制作图部件加工数据</span>
+            <div style="margin-top: 15px" />
+            <span style="font-weight: bold">管件加工数据</span>
             <el-table
               v-loading="loading"
               :data="tableThree"
               border
-              style="width: 100%;"
+              style="width: 100%"
               height="250"
-              :header-cell-style="{background:'#eef1f6',color:'#606266',padding:'0px'}"
+              :header-cell-style="{
+                background: '#eef1f6',
+                color: '#606266',
+                padding: '0px',
+              }"
               :row-style="iRowStyle"
               :cell-style="iCellStyle"
             >
-              <el-table-column prop="project" label="工程编号" width="100" align="center" />
-              <el-table-column prop="drawingNo" label="制作图号" width="120" align="center" />
+              <el-table-column
+                prop="project"
+                label="工程编号"
+                width="100"
+                align="center"
+              />
+              <el-table-column
+                prop="drawingNo"
+                label="制作图号"
+                width="120"
+                align="center"
+              />
 
-              <el-table-column prop="tribonModule" label="分段" width="80" align="center" />
-              <el-table-column prop="pipeNo" label="部件号" width="150" align="center" />
-              <el-table-column prop="jGXH" label="加工序号" align="center" />
+              <el-table-column
+                prop="tribonModule"
+                label="分段"
+                width="80"
+                align="center"
+              />
+              <el-table-column
+                prop="pipeNo"
+                label="部件号"
+                width="150"
+                align="center"
+              />
+              <el-table-column prop="jgxh" label="加工序号" align="center" />
               <el-table-column prop="jGFlag" label="标识" align="center" />
 
               <el-table-column prop="startBend" label="起弯点" align="center" />
-              <el-table-column prop="straightPipe" label="直管段" align="center" />
+              <el-table-column
+                prop="straightPipe"
+                label="直管段"
+                align="center"
+              />
               <el-table-column prop="pipeLine" label="身长" align="center" />
               <el-table-column prop="zJBend" label="转角" align="center" />
               <el-table-column prop="qJTurn" label="曲角" align="center" />
@@ -153,7 +293,11 @@
               <el-table-column prop="gLExcess" label="割量" align="center" />
               <el-table-column prop="radius" label="弯模" align="center" />
               <el-table-column prop="preTurn" label="预转角" align="center" />
-              <el-table-column prop="accConnection" label="附件连接" align="center" />
+              <el-table-column
+                prop="accConnection"
+                label="附件连接"
+                align="center"
+              />
             </el-table>
           </div>
         </el-main>
@@ -163,28 +307,28 @@
 </template>
 
 <script>
-import { getList, getA, getexcel, getPdf } from '@/api/table'
-import { Message, MessageBox } from 'element-ui'
-import pdf from 'vue-pdf'
+import { getList, getA, getexcel, getPdf } from "@/api/table";
+import { Message, MessageBox } from "element-ui";
+import pdf from "vue-pdf";
 
 export default {
-  name: 'Gj',
+  name: "gj",
   components: {
-    pdf
+    pdf,
   },
   data() {
     return {
       tableOne: [],
       tableTwo: [],
       tableThree: [],
-      drawingno: '',
+      drawingno: "",
       // formInline:{
       //     input:"",
       //     tuhao:""
       // },
-      input: 'T308K-5',
-      tuhao: '',
-      inputt: '',
+      input: "T308K-5",
+      tuhao: "",
+      inputt: "",
       loading: false,
       treedata: [
         // {
@@ -199,20 +343,19 @@ export default {
       ],
       tree: [],
       fileList: [],
-      href: 'http://localhost:18001/api/files/upload',
+      href: "http://localhost:18001/api/files/upload",
       defaultProps: {
-        children: 'pipeSketchLists',
-        label: 'drawingno'
-      }
-    }
+        children: "pipeSketchLists",
+        label: "drawingno",
+      },
+    };
   },
   created() {
     // this.fetchData()
   },
   methods: {
-
     submitUpload() {
-      this.$refs.upload.submit()
+      this.$refs.upload.submit();
     },
     // aa(){
 
@@ -221,97 +364,104 @@ export default {
     // });
     // },
     uploaddone(res, file, fileList) {
-      console.log(fileList.length)
-      console.log(this.fileList)
+      console.log(fileList.length);
+      console.log(this.fileList);
     },
     beforeUpload(files) {
-      this.fileList = []
-      this.fileList.push(files)
-      console.log(this.fileList)
+      this.fileList = [];
+      this.fileList.push(files);
+      console.log(this.fileList);
     },
-    gernerateId: function(index) {
-      return '0-0-' + index
-      console.log('0-0-' + index)
+    gernerateId: function (index) {
+      return "0-0-" + index;
+      console.log("0-0-" + index);
     },
     handleNodeClick(data) {
-      this.loading = true
-      console.log(data)
-      this.drawingno = data.drawingno
-      if (data.drawingno == '') {
+      console.log(data);
+      this.drawingno = data.drawingno;
+      if (this.inputt != data.drawingno) {
+        this.loading = true;
+      } else {
+        return;
+      }
+      if (data.drawingno == "") {
         Message({
           //  message: res.message,
-          message: '请输入正确船支编号',
-          type: 'error',
-          duration: 5 * 1000
-        })
+          message: "请输入正确船支编号",
+          type: "error",
+          duration: 5 * 1000,
+        });
+        return;
       }
-
+      //alert(data.tribonModule)
       getA(this.inputt, data.drawingno).then((response) => {
-      //  this. loading=false
-        this.tableOne = response.data.list
-        this.tableTwo = response.data.list1
-        this.tableThree = response.data.list2
-        this.loading = false
-      })
-      console.log(this.tableOne)
+        //  this. loading=false
+        this.tableOne = response.data.list;
+        this.tableTwo = response.data.list1;
+        this.tableThree = response.data.list2;
+        this.loading = false;
+      });
+      console.log("tableone");
+      console.log(this.tableOne);
     },
 
-    iRowStyle: function({ row, rowIndex }) {
-      return 'height:30px'
+    iRowStyle: function ({ row, rowIndex }) {
+      return "height:30px";
     },
-    iHeaderRowStyle: function({ row, rowIndex }) {
-      return 'height:30px'
+    iHeaderRowStyle: function ({ row, rowIndex }) {
+      return "height:30px";
     },
-    iCellStyle: function({ row, column, rowIndex, columnIndex }) {
-      return 'padding:0px'
+    iCellStyle: function ({ row, column, rowIndex, columnIndex }) {
+      return "padding:0px";
     },
 
     fetchData() {
       //  this.$set(this.treedata[0].children,0,"")
 
-      if (this.input == '') {
+      if (this.input == "") {
         Message({
           //  message: res.message,
-          message: '请输入正确船支编号',
-          type: 'error',
-          duration: 5 * 1000
-        })
-        retrun
+          message: "请输入正确船支编号",
+          type: "error",
+          duration: 5 * 1000,
+        });
+        return;
       }
 
       getList(this.input, this.tuhao)
         .then((response) => {
-          this.treedata = []
-          this.inputt = this.input
+          this.treedata = [];
+          this.inputt = this.input;
           // this.treedata=response.data.list;
-          console.log(response.data.list)
-          this.treedata.push(response.data.list)
+          console.log("shu1Q");
+          console.log(response.data.list);
+          this.treedata.push(response.data.list);
           // console.log(this.treedata)
         })
         .catch(() => {
-          console.log('aa')
+          console.log("aa");
 
           // this.treedata[0].children=[]
           // this.$set(this.treedata[0],0,'')
           //  console.log(this.treedata[0])
           //  this.treedata[0].drawingno=''
           //  this.$forceUpdate()
-        })
+        });
     },
     aaa() {
       getexcel(this.inputt, this.drawingno).then((response) => {
-        console.log(response.data)
-        const link = document.createElement('a')
-        const blob = new Blob([response], { type: 'application/vnd.ms-excel' })
-        link.style.display = 'none'
-        link.href = URL.createObjectURL(blob)
+        console.log(response.data);
+        const link = document.createElement("a");
+        const blob = new Blob([response], { type: "application/vnd.ms-excel" });
+        link.style.display = "none";
+        link.href = URL.createObjectURL(blob);
 
         // link.download = res.headers['content-disposition'] //下载后文件名
-        link.download = '管系生产设计数据管理.xlsx' // 下载的文件名
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-      })
+        link.download = "管系生产设计数据管理.xlsx"; // 下载的文件名
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
     },
     update(data) {
       // alert(data.drawingno);
@@ -321,10 +471,13 @@ export default {
       //   }});
       // window.open(routeData.href, '_blank');
 
-      this.$router.push({ name: 'Openpdf', query: { name: data.drawingno, page: data.page, sname: this.input }})
-    }
-  }
-}
+      this.$router.push({
+        name: "Openpdf",
+        query: { name: data.drawingno, page: data.page, sname: this.input },
+      });
+    },
+  },
+};
 </script>
 
  <style lang ="scss" scoped>

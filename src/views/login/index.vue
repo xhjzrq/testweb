@@ -164,7 +164,7 @@ export default {
               this.loading = false
             })
             .catch((e) => {
-              alert(e)
+            
               this.loading = false
             })
         } else {
