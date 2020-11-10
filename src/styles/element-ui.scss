@@ -93,7 +93,7 @@
 }
 .el-table__body tr,
   .el-table__body td {
-    padding: 0 !important ; 
+    padding: 0 !important ;
     height: 32px !important;
 }
 
@@ -103,7 +103,7 @@
   .cell
   {max-height: 23px !important;
     overflow: hidden !important;
-  } 
+  }
 }
 
 .el-tree::v-deep  .el-tree-node__expand-icon.expanded
@@ -149,7 +149,7 @@
 .el-scrollbar .el-scrollbar__wrap {overflow-x: hidden;}
 .el-tree>.el-tree-node{
 
-height: 350px; 
+height: 350px;
 min-width: 100%;
 display:inline-block;
 }
@@ -179,5 +179,11 @@ display:inline-block;
 
 .ant-descriptions-bordered .ant-descriptions-item-label{
   background: rgb(238, 241, 246) !important;
+}
+.ant-descriptions-item-label{
+  line-height: 12px !important;
+}
+.ant-descriptions-item-content{
+  line-height: 12px !important;
 }
 
